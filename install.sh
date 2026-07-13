@@ -7,6 +7,8 @@ CLAUDECEPTION_URL="https://github.com/blader/Claudeception/archive/62dbb91d1183a
 CLAUDECEPTION_SHA="b10e950267117a023ce56d3ef838b709b22ed17a32be598044ad2bcaf25f89dd"
 VIBESEC_URL="https://github.com/BehiSecc/VibeSec-Skill/archive/0590993b35ad51961f65a4d01cf1196dfead05bb.tar.gz"
 VIBESEC_SHA="96cc2a93824e557b9a472cc9e9876f22b9dc9f143520fcf831d8e1b59c7b0049"
+BUN_VERSION="1.3.10"
+BUN_INSTALL_SHA="bab8acfb046aac8c72407bdcce903957665d655d7acaa3e11c7c4616beae68dd"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" 2>/dev/null && pwd -P || pwd -P)"
 WORK_DIR=""
@@ -449,7 +451,12 @@ if [ "$NEEDS_BUILD" -eq 1 ]; then
     if [ "$install_bun" -eq 1 ]; then
       bun_installer="$TEMP_EXTERNAL/bun-install.sh"
       curl -fsSL --retry 3 https://bun.sh/install -o "$bun_installer"
-      bash "$bun_installer"
+      actual_bun_sha="$(sha256_file "$bun_installer")"
+      if [ "$actual_bun_sha" != "$BUN_INSTALL_SHA" ]; then
+        echo "Bun installer checksum mismatch; refusing to run it." >&2
+        exit 1
+      fi
+      BUN_VERSION="$BUN_VERSION" bash "$bun_installer"
       export BUN_INSTALL="${BUN_INSTALL:-$HOME/.bun}"
       export PATH="$BUN_INSTALL/bin:$PATH"
     else

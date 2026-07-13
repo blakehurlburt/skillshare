@@ -99,6 +99,21 @@ class RepositoryTests(unittest.TestCase):
             self.assertRegex(dependency["sha256"], r"^[0-9a-f]{64}$", name)
             self.assertIn(dependency["revision"], dependency["url"])
             self.assertIn(dependency["sha256"], installer)
+        self.assertIn('BUN_VERSION="1.3.10"', installer)
+        self.assertIn(
+            'BUN_INSTALL_SHA="bab8acfb046aac8c72407bdcce903957665d655d7acaa3e11c7c4616beae68dd"',
+            installer,
+        )
+
+    def test_runtime_dependency_surface_is_trimmed(self):
+        package = json.loads((ROOT / "runtime" / "gstack" / "package.json").read_text())
+        declared = set(package.get("dependencies", {})) | set(package.get("devDependencies", {}))
+        unused = {
+            "@anthropic-ai/claude-agent-sdk",
+            "@huggingface/transformers",
+            "puppeteer-core",
+        }
+        self.assertTrue(unused.isdisjoint(declared), sorted(unused & declared))
 
     def test_attribution_and_licenses_exist(self):
         notice = (ROOT / "THIRD_PARTY_NOTICES.md").read_text()

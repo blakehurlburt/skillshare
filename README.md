@@ -77,7 +77,7 @@ The installer appends a clearly marked block to `~/.codex/AGENTS.md` and/or `~/.
 - Backups go to `~/.skillshare/backups/`.
 - No updater is installed, and the fork has no remote telemetry path.
 
-The `planning`, `browser`, `documents`, and `context` groups use local compiled helpers. If Bun is missing, interactive setup asks before downloading Bun's official installer. Noninteractive `--yes` setup accepts that dependency installation. You can decline, install Bun yourself, and later run:
+The `planning`, `browser`, `documents`, and `context` groups use local compiled helpers. If Bun is missing, interactive setup asks before downloading Bun's official installer. The installer and Bun version are pinned, and the script is SHA-256 verified before it runs. Noninteractive `--yes` setup accepts that dependency installation. You can decline, install Bun yourself, and later run:
 
 ```bash
 ~/.skillshare/runtime/gstack/build-shareable.sh
