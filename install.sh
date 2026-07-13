@@ -10,7 +10,11 @@ VIBESEC_SHA="96cc2a93824e557b9a472cc9e9876f22b9dc9f143520fcf831d8e1b59c7b0049"
 BUN_VERSION="1.3.10"
 BUN_INSTALL_SHA="bab8acfb046aac8c72407bdcce903957665d655d7acaa3e11c7c4616beae68dd"
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" 2>/dev/null && pwd -P || pwd -P)"
+if [ -n "${BASH_SOURCE[0]:-}" ]; then
+  SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" 2>/dev/null && pwd -P || pwd -P)"
+else
+  SCRIPT_DIR="$(pwd -P)"
+fi
 WORK_DIR=""
 DOWNLOAD_DIR=""
 AGENT=""

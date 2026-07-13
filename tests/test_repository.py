@@ -156,6 +156,17 @@ class RepositoryTests(unittest.TestCase):
         self.assertIn("Dry run complete", dry_run)
         self.assertNotIn("claudeception", dry_run.split("Skills:", 1)[1].splitlines()[0])
 
+    def test_installer_runs_cleanly_from_a_copy_paste_command(self):
+        result = subprocess.run(
+            ["bash", "-c", (ROOT / "install.sh").read_text(), "--", "--list"],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        self.assertIn("Available groups", result.stdout)
+        self.assertNotIn("unbound variable", result.stderr)
+
     def test_local_field_notes_install_for_both_agents(self):
         with tempfile.TemporaryDirectory() as home:
             env = os.environ.copy()
