@@ -56,6 +56,7 @@
         "purchase-popup-safe-dismissal",
         "resume-rate-limited-code-sessions",
         "runner-real-money-stall-handoff",
+        "share-agent-skills-safely",
         "sleep-tolerant-launchd-scanner",
         "virtiofs-mutable-state-safety"
       ],
@@ -101,6 +102,7 @@
     "purchase-popup-safe-dismissal": {"source": "bundled", "agents": ["claude", "codex"]},
     "resume-rate-limited-code-sessions": {"source": "bundled", "agents": ["claude", "codex"]},
     "runner-real-money-stall-handoff": {"source": "bundled", "agents": ["claude", "codex"]},
+    "share-agent-skills-safely": {"source": "bundled", "agents": ["claude", "codex"]},
     "sleep-tolerant-launchd-scanner": {"source": "bundled", "agents": ["claude", "codex"]},
     "virtiofs-mutable-state-safety": {"source": "bundled", "agents": ["claude", "codex"]}
   },

@@ -189,6 +189,7 @@ class RepositoryTests(unittest.TestCase):
             for agent in ("claude", "codex"):
                 skills_root = Path(home) / f".{agent}" / "skills"
                 self.assertTrue((skills_root / "ntfy-unicode-headers" / "SKILL.md").is_file())
+                self.assertTrue((skills_root / "share-agent-skills-safely" / "SKILL.md").is_file())
                 self.assertTrue((skills_root / "_shared" / "preamble.md").is_file())
                 self.assertFalse((skills_root / "claudeception").exists())
 

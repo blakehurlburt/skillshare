@@ -84,7 +84,7 @@ csv_has() {
 
 all_groups="core planning browser documents context safety ios field-notes profile"
 all_skill_groups="core planning browser documents context safety ios field-notes"
-all_skills="add-skill investigate review security second-opinion claudeception brainstorm autoplan browse connect-chrome design-review make-pdf context-save context-restore freeze guard unfreeze ios-qa ios-fix ios-design-review ios-sync ios-clean apply-patch-workspace-root-paths claude-idle-prompt-rc-footer frontend-design-openai-setup notify-cmd-shell-quoting ntfy-unicode-headers purchase-popup-safe-dismissal resume-rate-limited-code-sessions runner-real-money-stall-handoff sleep-tolerant-launchd-scanner virtiofs-mutable-state-safety"
+all_skills="add-skill investigate review security second-opinion claudeception brainstorm autoplan browse connect-chrome design-review make-pdf context-save context-restore freeze guard unfreeze ios-qa ios-fix ios-design-review ios-sync ios-clean apply-patch-workspace-root-paths claude-idle-prompt-rc-footer frontend-design-openai-setup notify-cmd-shell-quoting ntfy-unicode-headers purchase-popup-safe-dismissal resume-rate-limited-code-sessions runner-real-money-stall-handoff share-agent-skills-safely sleep-tolerant-launchd-scanner virtiofs-mutable-state-safety"
 
 skills_for_group() {
   case "$1" in
@@ -95,7 +95,7 @@ skills_for_group() {
     context) echo "context-save context-restore" ;;
     safety) echo "freeze guard unfreeze" ;;
     ios) echo "ios-qa ios-fix ios-design-review ios-sync ios-clean" ;;
-    field-notes) echo "apply-patch-workspace-root-paths claude-idle-prompt-rc-footer frontend-design-openai-setup notify-cmd-shell-quoting ntfy-unicode-headers purchase-popup-safe-dismissal resume-rate-limited-code-sessions runner-real-money-stall-handoff sleep-tolerant-launchd-scanner virtiofs-mutable-state-safety" ;;
+    field-notes) echo "apply-patch-workspace-root-paths claude-idle-prompt-rc-footer frontend-design-openai-setup notify-cmd-shell-quoting ntfy-unicode-headers purchase-popup-safe-dismissal resume-rate-limited-code-sessions runner-real-money-stall-handoff share-agent-skills-safely sleep-tolerant-launchd-scanner virtiofs-mutable-state-safety" ;;
     profile) echo "" ;;
     *) return 1 ;;
   esac
