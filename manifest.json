@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "name": "skillshare",
+  "default_groups": ["core"],
+  "groups": {
+    "core": {
+      "description": "Everyday creation, debugging, review, security, and second-opinion workflows",
+      "skills": ["add-skill", "investigate", "review", "security", "second-opinion", "claudeception"],
+      "runtime": true,
+      "build_helpers": false
+    },
+    "planning": {
+      "description": "Product brainstorming and automatic multi-angle plan review",
+      "skills": ["brainstorm", "autoplan"],
+      "runtime": true,
+      "build_helpers": true
+    },
+    "browser": {
+      "description": "Browser control, live design QA, and the GStack Browser shell",
+      "skills": ["browse", "connect-chrome", "design-review"],
+      "runtime": true,
+      "build_helpers": true
+    },
+    "documents": {
+      "description": "Publication-quality PDF generation",
+      "skills": ["make-pdf"],
+      "runtime": true,
+      "build_helpers": true
+    },
+    "context": {
+      "description": "Save and restore working context",
+      "skills": ["context-save", "context-restore"],
+      "runtime": true,
+      "build_helpers": true
+    },
+    "safety": {
+      "description": "Restrict edit scope and guard destructive commands",
+      "skills": ["freeze", "guard", "unfreeze"],
+      "runtime": true,
+      "build_helpers": false
+    },
+    "ios": {
+      "description": "SwiftUI live-device QA, debugging, design review, sync, and cleanup",
+      "skills": ["ios-qa", "ios-fix", "ios-design-review", "ios-sync", "ios-clean"],
+      "runtime": true,
+      "build_helpers": false
+    },
+    "field-notes": {
+      "description": "Narrow troubleshooting playbooks extracted from real projects",
+      "skills": [
+        "apply-patch-workspace-root-paths",
+        "claude-idle-prompt-rc-footer",
+        "frontend-design-openai-setup",
+        "notify-cmd-shell-quoting",
+        "ntfy-unicode-headers",
+        "purchase-popup-safe-dismissal",
+        "resume-rate-limited-code-sessions",
+        "runner-real-money-stall-handoff",
+        "sleep-tolerant-launchd-scanner",
+        "virtiofs-mutable-state-safety"
+      ],
+      "runtime": false,
+      "build_helpers": false
+    },
+    "profile": {
+      "description": "Optional solo-developer workflow preferences for AGENTS.md or CLAUDE.md",
+      "skills": [],
+      "runtime": false,
+      "build_helpers": false,
+      "profile": "profiles/solo-dev.md"
+    }
+  },
+  "skills": {
+    "add-skill": {"source": "bundled", "agents": ["claude", "codex"]},
+    "investigate": {"source": "bundled", "agents": ["claude", "codex"]},
+    "review": {"source": "bundled", "agents": ["claude", "codex"]},
+    "security": {"source": "bundled", "agents": ["claude", "codex"], "external_dependency": "vibesec"},
+    "second-opinion": {"source": "bundled", "agents": ["claude", "codex"]},
+    "claudeception": {"source": "external", "agents": ["claude", "codex"], "external_dependency": "claudeception"},
+    "brainstorm": {"source": "bundled", "agents": ["claude", "codex"]},
+    "autoplan": {"source": "bundled", "agents": ["claude", "codex"]},
+    "browse": {"source": "bundled", "agents": ["claude", "codex"]},
+    "connect-chrome": {"source": "bundled", "agents": ["claude", "codex"]},
+    "design-review": {"source": "bundled", "agents": ["claude", "codex"]},
+    "make-pdf": {"source": "bundled", "agents": ["claude", "codex"]},
+    "context-save": {"source": "bundled", "agents": ["claude", "codex"]},
+    "context-restore": {"source": "bundled", "agents": ["claude", "codex"]},
+    "freeze": {"source": "bundled", "agents": ["claude", "codex"]},
+    "guard": {"source": "bundled", "agents": ["claude", "codex"]},
+    "unfreeze": {"source": "bundled", "agents": ["claude", "codex"]},
+    "ios-qa": {"source": "bundled", "agents": ["claude", "codex"]},
+    "ios-fix": {"source": "bundled", "agents": ["claude", "codex"]},
+    "ios-design-review": {"source": "bundled", "agents": ["claude", "codex"]},
+    "ios-sync": {"source": "bundled", "agents": ["claude", "codex"]},
+    "ios-clean": {"source": "bundled", "agents": ["claude", "codex"]},
+    "apply-patch-workspace-root-paths": {"source": "bundled", "agents": ["claude", "codex"]},
+    "claude-idle-prompt-rc-footer": {"source": "bundled", "agents": ["claude", "codex"]},
+    "frontend-design-openai-setup": {"source": "bundled", "agents": ["claude", "codex"]},
+    "notify-cmd-shell-quoting": {"source": "bundled", "agents": ["claude", "codex"]},
+    "ntfy-unicode-headers": {"source": "bundled", "agents": ["claude", "codex"]},
+    "purchase-popup-safe-dismissal": {"source": "bundled", "agents": ["claude", "codex"]},
+    "resume-rate-limited-code-sessions": {"source": "bundled", "agents": ["claude", "codex"]},
+    "runner-real-money-stall-handoff": {"source": "bundled", "agents": ["claude", "codex"]},
+    "sleep-tolerant-launchd-scanner": {"source": "bundled", "agents": ["claude", "codex"]},
+    "virtiofs-mutable-state-safety": {"source": "bundled", "agents": ["claude", "codex"]}
+  },
+  "external_dependencies": {
+    "claudeception": {
+      "url": "https://github.com/blader/Claudeception/archive/62dbb91d1183a866b5cf40079265c825b2695843.tar.gz",
+      "revision": "62dbb91d1183a866b5cf40079265c825b2695843",
+      "sha256": "b10e950267117a023ce56d3ef838b709b22ed17a32be598044ad2bcaf25f89dd",
+      "license": "MIT"
+    },
+    "vibesec": {
+      "url": "https://github.com/BehiSecc/VibeSec-Skill/archive/0590993b35ad51961f65a4d01cf1196dfead05bb.tar.gz",
+      "revision": "0590993b35ad51961f65a4d01cf1196dfead05bb",
+      "sha256": "96cc2a93824e557b9a472cc9e9876f22b9dc9f143520fcf831d8e1b59c7b0049",
+      "license": "Apache-2.0"
+    }
+  }
+}
