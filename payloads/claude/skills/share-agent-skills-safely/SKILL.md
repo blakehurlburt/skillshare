@@ -7,7 +7,7 @@ description: |
   installer must be safe for nontechnical users. Covers provenance classification, immutable
   archive pins and checksums, subset selection, sanitization, attribution, and remote smoke tests.
 author: Codex
-version: 1.0.0
+version: 1.1.0
 date: 2026-07-13
 ---
 
@@ -75,6 +75,11 @@ For customized forks:
 - retain only helpers actually referenced by bundled skills;
 - audit and trim dependencies after detaching the runtime.
 
+After trimming, compare runtime imports with the package manifest. A required module can appear to
+work only because an unrelated package supplies it transitively. Build from a clean Git archive or
+fresh checkout with no pre-existing dependency directory; a build in the working tree can be
+silently supported by stale or transitive packages.
+
 Attribution does not require a runtime dependency on the original repository.
 
 ### 4. Design installation around user choices
@@ -117,6 +122,7 @@ Automate checks for:
 - no personal paths, credentials, or obvious secrets;
 - complete licenses and attribution;
 - pinned revisions and checksums;
+- direct runtime imports declared as direct dependencies;
 - shell syntax and executable bits;
 - subset installation into a temporary home;
 - idempotent profile merging;
@@ -153,4 +159,3 @@ agent discovers the expected files.
 - Do not infer that two same-named skills are identical; compare content or provenance.
 - Dependency removal should be followed by both an advisory audit and the real build.
 - A successful installer exit is insufficient if stderr contains warnings that confuse beginners.
-
