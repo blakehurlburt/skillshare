@@ -107,13 +107,19 @@ class RepositoryTests(unittest.TestCase):
 
     def test_runtime_dependency_surface_is_trimmed(self):
         package = json.loads((ROOT / "runtime" / "gstack" / "package.json").read_text())
-        declared = set(package.get("dependencies", {})) | set(package.get("devDependencies", {}))
+        dependencies = set(package.get("dependencies", {}))
+        declared = dependencies | set(package.get("devDependencies", {}))
         unused = {
             "@anthropic-ai/claude-agent-sdk",
             "@huggingface/transformers",
             "puppeteer-core",
         }
         self.assertTrue(unused.isdisjoint(declared), sorted(unused & declared))
+        screenshot_guard = (
+            ROOT / "runtime" / "gstack" / "browse" / "src" / "screenshot-size-guard.ts"
+        ).read_text()
+        self.assertIn('import("sharp")', screenshot_guard)
+        self.assertIn("sharp", dependencies, "direct runtime import must be a direct dependency")
 
     def test_attribution_and_licenses_exist(self):
         notice = (ROOT / "THIRD_PARTY_NOTICES.md").read_text()
